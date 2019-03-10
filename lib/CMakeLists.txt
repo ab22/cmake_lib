@@ -27,7 +27,7 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER
 			"$<$<CONFIG:Debug>:-O0;-g3;-ggdb>"
 	)
 else()
-	message(FATAL_ERROR "> No compiler flags specified for ${CMAKE_CXX_COMPILER_ID}:${CMAKE_COMPILER_IS_CLANG}")
+	message(FATAL_ERROR "> No compiler flags specified for ${CMAKE_CXX_COMPILER_ID}")
 endif()
 
 set_target_properties(libmath
