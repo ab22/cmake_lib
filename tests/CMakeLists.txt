@@ -1,6 +1,5 @@
-add_subdirectory("${CMAKE_SOURCE_DIR}/vendor/googletest" "vendor/googletest")
-
 set(gtest_force_shared_crt ON CACHE BOOL "Always use msvcrt.dll" FORCE)
+add_subdirectory("${CMAKE_SOURCE_DIR}/vendor/googletest" "vendor/googletest")
 
 mark_as_advanced(
 	BUILD_GMOCK BUILD_GTEST BUILD_SHARED_LIBS
