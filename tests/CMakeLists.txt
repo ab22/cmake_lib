@@ -16,6 +16,15 @@ add_executable(libmath_tests
 	test_common.cpp
 )
 
+if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+	target_compile_options(libmath_tests
+		PRIVATE
+			/W4
+	)
+else()
+	message(FATAL_ERROR "> No compiler flags specified for ${CMAKE_CXX_COMPILER_ID}")
+endif()
+
 target_link_libraries(libmath_tests
 	PRIVATE
 		libmath
