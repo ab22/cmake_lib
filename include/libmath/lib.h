@@ -1,5 +1,15 @@
-// Math Library
+#include "c99defs.h"
 
-namespace libmath {
-	__declspec(dllexport) int get_magic_number();
-}
+// clang-format off
+#ifdef __cplusplus
+	extern "C" {
+#endif
+// clang-format on
+
+EXPORT int libmath_magic_number();
+
+// clang-format off
+#ifdef __cplusplus
+	}
+#endif
+// clang-format on

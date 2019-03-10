@@ -28,6 +28,12 @@ target_include_directories(libmath_tests
 		"${CMAKE_SOURCE_DIR}/include/"
 )
 
+target_compile_features(libmath_tests
+	PRIVATE
+		cxx_std_17
+		cxx_constexpr
+)
+
 add_test(
 	NAME
 		libmath_tests

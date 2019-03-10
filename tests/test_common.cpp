@@ -3,7 +3,7 @@
 
 TEST(TestMagicalNumber, ValidateMagicNumber)
 {
-	int magic_number = libmath::get_magic_number();
+	int magic_number = libmath_magic_number();
 
 	EXPECT_EQ(magic_number, 22);
 }

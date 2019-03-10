@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(libmath LANGUAGES CXX)
+project(libmath LANGUAGES C CXX)
 
 #
 # Create Library
@@ -7,7 +7,11 @@ project(libmath LANGUAGES CXX)
 
 add_library(libmath
 	SHARED
-		lib/lib.cpp
+		lib/lib.c
+
+		include/libmath/lib.h
+		include/libmath/c99defs.h
+
 )
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
@@ -21,8 +25,7 @@ endif()
 
 target_compile_features(libmath
 	PRIVATE
-		cxx_std_17
-		cxx_constexpr
+		c_std_11
 )
 
 set_target_properties(libmath
