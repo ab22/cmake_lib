@@ -12,14 +12,23 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 		PRIVATE
 			/W4
 	)
+elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	target_compile_options(libmath
+		PRIVATE
+			-Wall
+			-Wextra
+			-Wvla
+			-Wno-unused-function
+			-Werror-implicit-function-declaration
+			-Wno-missing-braces
+			-Wno-missing-field-initializers
+			-std=gnu99
+			-fno-strict-aliasing
+			"$<$<CONFIG:Debug>:-O0;-g3;-ggdb>"
+	)
 else()
-	message(FATAL_ERROR "> No compiler flags specified for ${CMAKE_CXX_COMPILER_ID}")
+	message(FATAL_ERROR "> No compiler flags specified for ${CMAKE_CXX_COMPILER_ID}:${CMAKE_COMPILER_IS_CLANG}")
 endif()
-
-target_compile_features(libmath
-	PRIVATE
-		c_std_11
-)
 
 set_target_properties(libmath
 	PROPERTIES

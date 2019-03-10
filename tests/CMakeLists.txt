@@ -21,6 +21,19 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 		PRIVATE
 			/W4
 	)
+elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	target_compile_options(libmath_tests
+		PRIVATE
+			-Wall
+			-Wextra
+			-Wvla
+			-Wno-unused-function
+			-Werror-implicit-function-declaration
+			-Wno-missing-braces
+			-Wno-missing-field-initializers
+			-fno-strict-aliasing
+			"$<$<CONFIG:Debug>:-O0;-g3;-ggdb>"
+	)
 else()
 	message(FATAL_ERROR "> No compiler flags specified for ${CMAKE_CXX_COMPILER_ID}")
 endif()
@@ -35,12 +48,6 @@ target_link_libraries(libmath_tests
 target_include_directories(libmath_tests
 	PRIVATE
 		"${CMAKE_SOURCE_DIR}/include/"
-)
-
-target_compile_features(libmath_tests
-	PRIVATE
-		cxx_std_17
-		cxx_constexpr
 )
 
 add_test(
